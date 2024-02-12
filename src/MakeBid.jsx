@@ -1,6 +1,8 @@
 // MakeBid.js
 import React, { useState } from 'react';
 import './MakeBid.css';
+import { Link, Route, Routes } from 'react-router-dom';
+import List from './List';
 
 function MakeBid({ onClose }) {
   const [bidAmount, setBidAmount] = useState('');
@@ -19,7 +21,9 @@ function MakeBid({ onClose }) {
     console.log("Bid Amount:", bidAmount);
     console.log("Description:", description);
     // Close the MakeBid component
-    onClose();
+    return (<Routes>
+      <Route exact path='/list' element={<List />} />
+    </Routes>);
   };
 
   return (
@@ -38,7 +42,7 @@ function MakeBid({ onClose }) {
         value={description}
         onChange={handleDescriptionChange}
       />
-      <button onClick={handleListBid}>List Your Bid</button>
+      <Link to={"/list"} >List Bid</Link>
     </div>
   );
 }

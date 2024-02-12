@@ -2,6 +2,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './List.css';
+import Popup from 'reactjs-popup';
+import './reactjs-popup.css';
+import MakeBid from './MakeBid';
 
 function List() {
   // Assume projects is an array containing project information
@@ -18,7 +21,7 @@ function List() {
       lastDateToBid: "2024-02-15",
       description: "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
     }
-  ]; 
+  ];
 
   return (
     <div className="list">
@@ -43,10 +46,11 @@ function List() {
                 <td>{project.datePublished}</td>
                 <td>{project.lastDateToBid}</td>
                 <td>
-                  <button className="description-button">View Description</button>
-                  <div className="description-content">{project.description}</div>
+                  <Popup trigger={<button>View Description</button>}>
+                    <div className="description-content">Heyy</div>
+                  </Popup>
                 </td>
-                <td><Link to={`/bid/${project.id}`} className="bid-button">Bid</Link></td>
+                <td><Link to={`/bid`} className="bid-button">Bid</Link></td>
               </tr>
             ))}
           </tbody>
